@@ -1,0 +1,48 @@
+"""this tests tests my list"""
+
+>>> MyList = __import__('1-my_list').MyList
+>>> this = MyList()
+>>> this.append(5)
+>>> this.append(4)
+>>> this.append(3)
+>>> this.append(2)
+>>> this.append(1)
+>>> this.print_sorted()
+[1, 2, 3, 4, 5]
+
+>>> this.append(0)
+>>> this.append(-3)
+>>> this.append (-4)
+>>> this.print_sorted()
+[-4, -3, 0, 1, 2, 3, 4, 5]
+>>> del(this)
+>>> this = MyList()
+>>> this.append(0)
+>>> this.append(0)
+>>> this.append(0)
+>>> this.print_sorted()
+[0, 0, 0]
+>>> del(this)
+>>> this = MyList()
+>>> this.print_sorted()
+[]
+>>> this.append("for")
+>>> this.append("what")
+>>> this.print_sorted()
+['for', 'what']
+>>> this.append(7)
+>>> this.print_sorted()
+Traceback (most recent call last):
+TypeError: '<' not supported between instances of 'int' and 'str'
+>>> del(this)
+>>> this = MyList()
+>>> this.append(3)
+>>> this.append(100)
+>>> this.append(2)
+>>> this.print_sorted()
+[2, 3, 100]
+
+>>> thisit = MyList()
+>>> thisit.append(-1)
+>>> thisit.print_sorted()
+[-1]
