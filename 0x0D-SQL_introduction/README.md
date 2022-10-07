@@ -1,1 +1,1 @@
-MySql basics
+Learning how to manipulate Databases: MySql basics
