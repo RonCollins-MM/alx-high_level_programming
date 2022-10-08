@@ -1,12 +1,15 @@
 #!/usr/bin/python3
-"""writes serialized text to a file"""
-
+"""Deserializes a JSON file"""
 
 import json
 
-
 def load_from_json_file(filename):
-    """writes serialized text to a file"""
+    """Creates an object from a JSON file
+
+    Args:
+        filename - The file containing the JSON string
+
+    """
     with open(filename, "r", encoding="UTF-8") as fi:
         text = fi.read()
     return json.loads(text)
