@@ -1,16 +1,13 @@
-=============================
-The ``0-add_integer`` module
-=============================
+===========================================
+Unit Tests for the ``0-add_integer`` module
+===========================================
 
 Using ``add_integer``
 ---------------------
 
-Import the function:
+Function is first imported then tested:
 
     >>> add_integer = __import__('0-add_integer').add_integer
-
-Now test it:
-
     >>> add_integer(1, 2)
     3
 
