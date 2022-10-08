@@ -3,5 +3,13 @@
 serialization"""
 
 def class_to_json(obj):
-    """returns the dict of this obj instance for covnversion to JSON"""
+    """Returns the dict of an obj instance for covnversion to JSON
+
+    Args:
+        obj - The object to be converted to __dict__
+
+    Returns:
+        The object dictionary format
+
+    """
     return obj.__dict__
