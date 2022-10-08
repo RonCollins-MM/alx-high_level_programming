@@ -1,14 +1,19 @@
 #!/usr/bin/python3
 """
-Module add-integer
-Adds two integer together
+Module that adds two integers together.
 
 """
 
-
 def add_integer(a, b=98):
-    """Returns the addition of a and b,
-    or an error if a and b are not integers or floats
+    """Adds two integers. If the parameters passed are not of type ``int`` or
+    ``float``, an TypeError is thrown. Floats passed are rounded to the neares int.
+
+    Args:
+        a - First integer
+        b - Second integer
+
+    Returns:
+        Sum of a and b
     """
 
     if type(a) is not int and type(a) is not float:
