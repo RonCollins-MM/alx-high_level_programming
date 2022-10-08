@@ -6,11 +6,11 @@ Module that adds two integers together.
 
 def add_integer(a, b=98):
     """Adds two integers. If the parameters passed are not of type ``int`` or
-    ``float``, an TypeError is thrown. Floats passed are rounded to the neares int.
+    ``float``, an TypeError is thrown. Floats passed are rounded to the nearest int.
 
     Args:
         a - First integer
-        b - Second integer
+        b - Second integer. Default is 98
 
     Returns:
         Sum of a and b

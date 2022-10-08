@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest for the max_integer module
+"""Unittest for the max_integer module using the builtin unittest module
 """
 
 import unittest
