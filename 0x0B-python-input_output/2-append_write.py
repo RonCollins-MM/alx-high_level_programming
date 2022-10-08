@@ -1,9 +1,18 @@
 #!/usr/bin/python3
-"""this module appends to a file"""
+"""Module with a function that appends text to a file"""
 
 
 def append_write(filename="", text=""):
-    """appends to a file"""
+    """This function appends text to a file
+
+    Args:
+        filename: File to append text to
+        text: Text to be appended
+
+    Returns:
+        The number of characters appended
+
+    """
     with open(filename, "a", encoding="UTF-8") as fi:
         count = fi.write(text)
     return count
