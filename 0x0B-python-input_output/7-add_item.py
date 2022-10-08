@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-"""this module adds all args to a list and saves to a file"""
+"""This module adds all args to a list and saves to a file as a JSON string.
+
+The file name is ``add_item.json``. If the file doesn't exist, it will be
+created. If no arguments exist, an empty Python List object will be dumped to
+the file, otherwise, a List containing the arguments will be saved to the file
+as JSON.
+
+"""
 
 if __name__ == "__main__":
 
