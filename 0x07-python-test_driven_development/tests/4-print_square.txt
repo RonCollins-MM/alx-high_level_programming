@@ -1,16 +1,13 @@
-==================================
-The ``4-print_square.txt`` module
-==================================
+===============================================
+UnitTests for The ``4-print_square.txt`` module
+===============================================
 
 Using ``print_square``
 -----------------------
 
-Import the function:
+Import the function then use it:
 
     >>> print_square = __import__('4-print_square').print_square
-
-Now test it:
-
     >>> print_square(4)
     ####
     ####
