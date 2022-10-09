@@ -1,1 +1,1 @@
-Refreshing all key concepts in python before beginning a large project
+This is a summary project to refresh the key conepts in Python before the AirBnB project.
