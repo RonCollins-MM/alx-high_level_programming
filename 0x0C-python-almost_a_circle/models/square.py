@@ -1,35 +1,38 @@
 #!/usr/bin/python3
-"""this module creates a square"""
+"""Square Class Module"""
 
 
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """this class creates and square and subclasses a Rectangle"""
+    """
+    Square Class implementation.
+
+    Inherits from Rectangle class.
+    """
+
     def __init__(self, size, x=0, y=0, id=None):
-        """the constructor"""
+        """Constructor"""
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        """returns a string repr of this rectangle"""
-        string = "[{}] ({}) {}/{} - {}".\
-            format("Square", self.id, self.x, self.y, self.width)
-        return string
+        """returns a string representation of Square instance"""
+        return f'[Square] ({self.id}) {self.x}/{self.y} - {self.width}'
 
     @property
     def size(self):
-        """returns the size"""
+        """Getter for size"""
         return self.height
 
     @size.setter
     def size(self, size):
-        """sets the size"""
+        """Setter for size"""
         self.width = size
         self.height = size
 
     def update(self, *args, **kwargs):
-        """this updates the attributes of this square"""
+        """Updates the attributes of Square instance"""
         count = 0
         if args:
             for i in args:
@@ -60,7 +63,6 @@ class Square(Rectangle):
                 self.y = kwargs['y']
 
     def to_dictionary(self):
-        """returns the dictionary repr of this square"""
-        thisdict = {'id': self.id, 'x': self.x,
+        """Generates a dictionary object of Square instance"""
+        return {'id': self.id, 'x': self.x,
                     'size': self.height, 'y': self.y}
-        return thisdict

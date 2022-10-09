@@ -1,15 +1,27 @@
 #!/usr/bin/python3
-"""this module creates a rectangle"""
-
+"""Rectangle Class Module"""
 
 from models.base import Base
 
-
 class Rectangle(Base):
-    """this class creates a rectangle object"""
+    """
+    Rectangle Class implementation. Inherits from Base Class.
+
+    """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """this is the Rectangle constructor"""
+        """Constructor.
+        All Rectangle objects must be instantiated with a specified width and
+        height.
+
+        Args:
+            width (int) - Width of Rectangle object
+            height (int) - Height of Rectangle object
+            x (int, optional) - x coordinate of Rectangle object
+            y (int, optional) - y coordinate of Rectangle object
+            id (int, optional) - id of Rectangle object
+
+        """
         if type(width) is not int:
             raise TypeError("width must be an integer")
         if type(height) is not int:
@@ -34,12 +46,12 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """returns the width"""
+        """Getter for width"""
         return self.__width
 
     @width.setter
     def width(self, width):
-        """changes the width"""
+        """Setter for width"""
         if type(width) is not int:
             raise TypeError("width must be an integer")
         if width <= 0:
@@ -48,12 +60,12 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """returns the height"""
+        """Getter for height"""
         return self.__height
 
     @height.setter
     def height(self, height):
-        """changes the height"""
+        """Setter for height"""
         if type(height) is not int:
             raise TypeError("height must be an integer")
         if height <= 0:
@@ -62,12 +74,12 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """returns the x value"""
+        """Getter for x"""
         return self.__x
 
     @x.setter
     def x(self, x):
-        """changes the x value"""
+        """Setter for x"""
         if type(x) is not int:
             raise TypeError("x must be an integer")
         if x < 0:
@@ -76,12 +88,12 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        """returns the y value"""
+        """Getter for y"""
         return self.__y
 
     @y.setter
     def y(self, y):
-        """changes the y value"""
+        """Setter for y"""
         if type(y) is not int:
             raise TypeError("y must be an integer")
         if y < 0:
@@ -89,11 +101,15 @@ class Rectangle(Base):
         self.__y = y
 
     def area(self):
-        """returns the area of this rectangle"""
+        """Calculates area of Rectangle instance.
+
+        Returns:
+            Area
+        """
         return self.__width * self.__height
 
     def display(self):
-        """displays this rectangle"""
+        """Prints instance of Rectangle class with ``#`` symbol """
         if self.__y > 0:
             print("\n" * self.__y, end="")
         for i in range(self.__height):
@@ -105,14 +121,12 @@ class Rectangle(Base):
                 print()
 
     def __str__(self):
-        """returns a string repr of this rectangle"""
-        string = "[{}] ({}) {}/{} - {}/{}".\
-            format("Rectangle", self.id, self.__x, self.__y,
-                   self.__width, self.__height)
-        return string
+        """Returns a string representation of Rectangle class"""
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} -
+        {self.__width}/{self.__height}"
 
     def update(self, *args, **kwargs):
-        """assigns an argument to each attribute"""
+        """Updates attributes of an instance of Rectangle class"""
         count = 0
         if args:
             for i in args:
@@ -149,7 +163,6 @@ class Rectangle(Base):
                 self.y = kwargs['y']
 
     def to_dictionary(self):
-        """returns the dict repr of this rectangle"""
-        thisdict = {'x': self.x, 'y': self.y, 'id': self.id,
+        """Generates a dictionary object of a Rectangle instance"""
+        return {'x': self.x, 'y': self.y, 'id': self.id,
                     'height': self.height, 'width': self.width}
-        return thisdict

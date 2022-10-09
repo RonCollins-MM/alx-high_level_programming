@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""this is the base class"""
+"""Base Class Module"""
 
 import models
 import json
@@ -7,12 +7,19 @@ import os
 
 
 class Base:
-    """the base class"""
+    """Base class Implementation"""
 
     __nb_objects = 0
+    """int: Public attribute to keep track of number of instances from child
+    Classes"""
 
     def __init__(self, id=None):
-        """the class constructor"""
+        """Constructor.
+
+        Args:
+            id (int) - Identification for each obejct. (Default = None)
+
+        """
         if id is not None:
             self.id = id
         else:
@@ -21,31 +28,74 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """return json repre"""
+        """Generates a JSON string from a List of Dictionaries. If an  empty list
+        is passed, an empty string is returned.
+
+        Args:
+            list_dictionaries - The List of Dictionaries to process from
+        Returns:
+            The JSON string generated if non-empty list passed, othwerwise,
+            returns an empty string.
+        """
         if list_dictionaries is None or list_dictionaries == "":
             return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """save json repr of listobjs to a file"""
-        with open("{}.json".format(cls.__name__), "w", encoding="UTF-8") as f:
-            thislist = []
+        """
+        Saves JSON representation of a list of objects to a file.
+
+        The list of objects is first converted to a corresponding list of their
+        dictionary equivalents.
+        If empty list is passed, an empty string is saved to file.
+
+        File will be created if it doesn't exist.
+        The file name is auto-generated with the format: ``<class_name>.json``
+        Contents of file will be overwritten if it exists.
+
+        Args:
+            list_objs - A list of objects that inherit from Base Class.
+        """
+        with open(f'{cls.__name__}.json', 'w', encoding='UTF-8') as f:
+            dict_list = []
             if list_objs is not None:
                 for i in list_objs:
-                    thislist.append(i.to_dictionary())
-            f.write(Base.to_json_string(thislist))
+                    dict_list.append(i.to_dictionary())
+            f.write(Base.to_json_string(dict_list))
 
     @staticmethod
     def from_json_string(json_string):
-        """converts json string to py object"""
+        """Generates Python Dict object from JSON string. If JSON string is
+        empty, an empty List is returned.
+
+        Args:
+            json_string - The JSON string to generate from
+
+        Returns:
+            Python Dict object from JSON string.
+        """
         if json_string is None or "":
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
-        """returns an instance"""
+        """Creates a new instance of the Rectangle or
+        Square child class from a dictionary object.
+
+        Uses the update method from the respective Class.
+        A dummy instance is created first and then updated with the passed
+        attributes.
+
+        Args:
+            **dictionary(:obj: dict) - dictionary containing attributes to
+            create new instance with.
+
+        Returns:
+            The created instance
+        """
+
         inst = ""
         if cls.__name__ == "Rectangle":
             inst = models.rectangle.Rectangle(1, 1)
@@ -56,20 +106,36 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """load from from file"""
-        f = "{}.json".format(cls.__name__)
-        if not os.path.exists(f):
+        """Creates instances of Rectangle or Square child classes from a JSON
+        string and bundles them into a List object.
+
+        The instances are created from a JSON file. Once the JSON file is read,
+        a dictionary object containing dictionaries that contain attributes
+        either Square or Rectangle objects is returned.
+        Instances are then created from these nested dictionaries and appended
+        to a List object.
+
+        Returns:
+            A list of instances from Square or Rectangle class.
+        """
+
+        # Make sure file exists
+        j_file = f"{cls.__name__}.json"
+        if not os.path.exists(j_file):
             return []
-        string = ""
-        with open(f, "r", encoding="UTF-8") as f:
-            string = Base.from_json_string(f.read())
-        listinst = []
-        for i in string:
+
+        # Open JSON file and read from it. Result is a Dict object
+        with open(j_file, "r", encoding="UTF-8") as f:
+            dict_ = Base.from_json_string(f.read())
+
+        # Create a list of instances from the Dict object obtained
+        inst_list = []
+        for i in dict_:
             if cls.__name__ == "Rectangle":
-                listinst.append(models.rectangle.Rectangle.create(**i))
+                inst_list.append(models.rectangle.Rectangle.create(**i))
             else:
-                listinst.append(models.square.Square.create(**i))
-        return listinst
+                inst_list.append(models.square.Square.create(**i))
+        return int_list
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
