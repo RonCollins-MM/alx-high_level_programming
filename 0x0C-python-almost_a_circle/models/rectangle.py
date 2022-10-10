@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Rectangle Class Module"""
 
-from models.base import Base
+from base import Base
 
 class Rectangle(Base):
     """
@@ -122,7 +122,7 @@ class Rectangle(Base):
 
     def __str__(self):
         """Returns a string representation of Rectangle class"""
-        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} -
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} -\
         {self.__width}/{self.__height}"
 
     def update(self, *args, **kwargs):

@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """Base Class Module"""
 
-import models
 import json
 import os
-
 
 class Base:
     """Base class Implementation"""
