@@ -1,2 +1,2 @@
--- list all the tables of a database in your MySQL server
+-- list  tables of a database
 SHOW TABLES
