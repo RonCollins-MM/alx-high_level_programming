@@ -1,1 +1,1 @@
-Learning how to manipulate JSON files using JavaScript.
+Learning how to manipulate JSON files using JavaScript through APIs.
